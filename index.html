@@ -1651,6 +1651,144 @@
         font-size: 10px;
     }
 }
+.floating-stickers {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.floating-stickers {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.rani-sticker {
+    position: absolute;
+    bottom: -80px;
+
+    width: 55px;
+    height: 55px;
+
+    object-fit: cover;
+
+    /* bikin foto berbentuk love */
+    clip-path: polygon(
+        50% 100%,
+        5% 55%,
+        2% 35%,
+        8% 18%,
+        22% 10%,
+        36% 12%,
+        50% 28%,
+        64% 12%,
+        78% 10%,
+        92% 18%,
+        98% 35%,
+        95% 55%
+    );
+
+    filter: drop-shadow(0 5px 8px rgba(220,120,150,.18));
+
+    animation: floatingRani 9s linear infinite;
+}
+
+.rani-sticker:nth-child(1) {
+    left: 8%;
+    top: 18%;
+    animation-delay: 0s;
+}
+
+.rani-sticker:nth-child(2) {
+    right: 8%;
+    top: 25%;
+    animation-delay: 2s;
+}
+
+.rani-sticker:nth-child(3) {
+    left: 12%;
+    bottom: 15%;
+    animation-delay: 4s;
+}
+
+.rani-sticker:nth-child(4) {
+    right: 12%;
+    bottom: 18%;
+    animation-delay: 6s;
+}
+.rani-sticker:nth-child(5) {
+    left: 43%;
+    top: 8%;
+    animation-delay: 4s;
+}
+
+.rani-sticker:nth-child(6) {
+    left: 48%;
+    bottom: 10%;
+    animation-delay: 5s;
+}
+
+.rani-sticker:nth-child(7) {
+    right: 5%;
+    top: 14%;
+    animation-delay: 1.5s;
+}
+
+.rani-sticker:nth-child(8) {
+    right: 20%;
+    top: 32%;
+    animation-delay: 2.5s;
+}
+
+.rani-sticker:nth-child(9) {
+    right: 7%;
+    top: 58%;
+    animation-delay: 3.5s;
+}
+
+.rani-sticker:nth-child(10) {
+    right: 25%;
+    bottom: 12%;
+    animation-delay: 4.5s;
+}
+
+.rani-sticker:nth-child(11) {
+    right: 42%;
+    top: 20%;
+    animation-delay: 5.5s;
+}
+
+.rani-sticker:nth-child(12) {
+    right: 45%;
+    bottom: 25%;
+    animation-delay: 6.5s;
+}
+
+@keyframes floatingRani {
+
+    0% {
+        transform: translateY(0) rotate(-8deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-55vh) rotate(8deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateY(-120vh) rotate(-8deg);
+        opacity: 0;
+    }
+}
     </style>
 
 </head>
@@ -1690,6 +1828,20 @@
 </button>
 
     </div>
+    <div class="floating-stickers">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+</div>
     
    <div id="storyPopup" class="story-popup">
 
