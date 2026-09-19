@@ -1,0 +1,2779 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Our Little World</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ffe4ec,
+                #fff5f7,
+                #ffd6e3
+            );
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+
+            padding: 50px;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+
+            width: 350px;
+        }
+
+        h1 {
+            color: #d85c7a;
+            font-size: 40px;
+        }
+
+        p {
+            color: #777;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+
+            padding: 14px 28px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            background: #e98ba4;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d86f8d;
+        }
+        .hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hearts span {
+    position: absolute;
+    bottom: -50px;
+    color: #e98ba4;
+    font-size: 25px;
+    animation: float 8s linear infinite;
+}
+
+.hearts span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.hearts span:nth-child(2) {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.hearts span:nth-child(3) {
+    left: 40%;
+    animation-delay: 4s;
+}
+
+.hearts span:nth-child(4) {
+    left: 60%;
+    animation-delay: 1s;
+}
+
+.hearts span:nth-child(5) {
+    left: 75%;
+    animation-delay: 3s;
+}
+
+.hearts span:nth-child(6) {
+    left: 90%;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+
+}
+.floating-stickers {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.rani-sticker {
+    position: absolute;
+    bottom: -120px;
+    width: 80px;
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.15));
+    animation: raniFloat 9s linear infinite;
+}
+
+.rani-sticker:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.rani-sticker:nth-child(2) {
+    left: 35%;
+    animation-delay: 2s;
+}
+
+.rani-sticker:nth-child(3) {
+    left: 65%;
+    animation-delay: 4s;
+}
+
+.rani-sticker:nth-child(4) {
+    left: 85%;
+    animation-delay: 6s;
+}
+
+@keyframes raniFloat {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(15deg);
+        opacity: 0;
+    }
+
+}
+.sticker {
+    position: absolute;
+    width: 100px;
+
+    top: 50px;
+    right: 80px;
+
+    transform: rotate(8deg);
+
+    filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.15));
+
+    z-index: 2;
+}
+.story-popup {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 210, 225, 0.55);
+
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.4s ease;
+
+    z-index: 10;
+}
+
+.story-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.story-box {
+    width: 330px;
+
+    padding: 35px 25px;
+
+    background: linear-gradient(
+        145deg,
+        #fff5f8,
+        #ffe3ec
+    );
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px rgba(220, 120, 150, 0.25);
+
+    transform: scale(0.7);
+
+    transition: all 0.4s ease;
+}
+
+.story-popup.show .story-box {
+    transform: scale(1);
+}
+
+.small-heart {
+    font-size: 45px;
+    color: #e98ba4;
+
+    margin-bottom: 5px;
+}
+
+.story-box h2 {
+    color: #d96f8e;
+    margin-bottom: 10px;
+}
+
+.story-box p {
+    color: #8d6873;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.story-box button {
+    margin-top: 15px;
+
+    padding: 10px 22px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: #e98ba4;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+    .story-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.story-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #ffe4ec,
+        #fff5f7,
+        #ffd6e3
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.5s ease;
+
+    z-index: 20;
+}
+
+.story-page.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.story-content {
+    width: 360px;
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    padding: 25px 30px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 40px rgba(220, 120, 150, 0.2);
+
+    box-sizing: border-box;
+}
+
+.story-content h1 {
+    color: #d96f8e;
+    font-size: 18px;
+}
+
+.story-content h2 {
+    color: #e98ba4;
+    font-size: 27px;
+}
+
+.story-content p {
+    color: #8d6873;
+    line-height: 1.7;
+}
+
+.photobooth-card {
+    width: 280px;
+    margin: 20px auto;
+    padding: 12px 12px 18px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 25px rgba(220, 120, 150, 0.2);
+
+    transform: rotate(-2deg);
+
+    transition: transform 0.3s ease;
+}
+
+.photobooth-card:hover {
+    transform: rotate(0deg) scale(1.03);
+}
+
+.memory-video {
+    width: 100%;
+
+    display: block;
+
+    border-radius: 5px;
+}
+
+.photobooth-caption {
+    margin: 12px 0 0;
+
+    color: #d96f8e;
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+.memory-date {
+    margin-top: 20px;
+
+    color: #d96f8e;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    opacity: 0.85;
+}
+
+.story-content button {
+    margin: 8px 4px;
+}
+.memory-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.memory-photo {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+}
+
+.date-card {
+    margin: 25px auto;
+    padding: 15px 20px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(
+        135deg,
+        #fff0f5,
+        #ffe0ea
+    );
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(220, 120, 150, 0.15);
+}
+
+.date-heart {
+    font-size: 30px;
+    color: #e98ba4;
+}
+
+.date-card span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #b98291;
+    margin-bottom: 4px;
+}
+
+.date-card strong {
+    display: block;
+    font-size: 18px;
+    color: #d96f8e;
+    letter-spacing: 2px;
+}
+
+.jadian-memories {
+    margin: 25px 0;
+}
+
+.memory-intro {
+    margin-bottom: 20px;
+}
+
+.memory-intro span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #d96f8e;
+    font-weight: bold;
+}
+
+.memory-intro p {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: #9b7180;
+}
+
+.jadian-video-card {
+    background: white;
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(220, 120, 150, 0.18);
+    transform: rotate(-1deg);
+    margin: 20px auto;
+}
+
+.jadian-video-card video {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+.memory-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5px 3px;
+}
+
+.memory-label span {
+    font-size: 11px;
+    color: #d96f8e;
+    font-weight: bold;
+}
+
+.memory-label p {
+    margin: 0;
+    font-size: 12px;
+    color: #9b7180;
+    font-style: italic;
+}
+
+.jadian-photo-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.jadian-photo-card {
+    width: 45%;
+    background: white;
+    padding: 7px 7px 12px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(220, 120, 150, 0.15);
+}
+
+.jadian-photo-card img {
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+}
+
+.jadian-photo-card span {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #d96f8e;
+    font-style: italic;
+}
+
+.photo-left {
+    transform: rotate(-4deg);
+}
+
+.photo-right {
+    transform: rotate(4deg);
+}
+
+.second-video {
+    transform: rotate(1deg);
+}
+.question-card {
+    margin: 30px auto;
+    padding: 25px 20px;
+    background: linear-gradient(
+        145deg,
+        #fff8fa,
+        #ffe8ef
+    );
+    border-radius: 25px;
+    box-shadow: 0 12px 30px rgba(220, 120, 150, 0.18);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.question-heart {
+    font-size: 38px;
+    color: #e98ba4;
+    margin-bottom: 5px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.question-small {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #b98291;
+    text-transform: uppercase;
+}
+
+.question-card h3 {
+    margin: 8px 0 18px;
+    color: #d96f8e;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.question-card button {
+    border: none;
+    padding: 11px 20px;
+    border-radius: 25px;
+    background: #e98ba4;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    transition: transform 0.2s ease;
+}
+
+.question-card button:hover {
+    transform: scale(1.05);
+}
+
+.answer-reveal {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.7s ease;
+}
+
+.answer-reveal.show {
+    max-height: 250px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.question-text {
+    font-size: 18px;
+    color: #8d6873;
+    font-style: italic;
+}
+
+.yes-text {
+    margin: 15px 0;
+    font-size: 25px;
+    font-weight: bold;
+    color: #d96f8e;
+}
+
+.answer-message {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #9b7180;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+.nervous-note {
+    display: inline-block;
+    margin: 5px auto 15px;
+    padding: 7px 14px;
+    background: #fff0f5;
+    border-radius: 20px;
+    color: #d96f8e;
+    font-size: 11px;
+    font-weight: bold;
+    transform: rotate(-2deg);
+    box-shadow: 0 5px 12px rgba(220, 120, 150, 0.12);
+}
+.little-hearts {
+    position: relative;
+    height: 35px;
+    margin-top: 10px;
+}
+
+.little-hearts span {
+    position: absolute;
+    bottom: 0;
+    color: #e98ba4;
+    font-size: 18px;
+    animation: littleHeartFloat 2.5s ease-out infinite;
+    opacity: 0;
+}
+
+.little-hearts span:nth-child(1) {
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.little-hearts span:nth-child(2) {
+    left: 30%;
+    animation-delay: 0.5s;
+}
+
+.little-hearts span:nth-child(3) {
+    left: 50%;
+    animation-delay: 1s;
+}
+
+.little-hearts span:nth-child(4) {
+    left: 70%;
+    animation-delay: 1.5s;
+}
+
+.little-hearts span:nth-child(5) {
+    left: 85%;
+    animation-delay: 2s;
+}
+
+@keyframes littleHeartFloat {
+    0% {
+        transform: translateY(10px) scale(0.7);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-35px) scale(1.1);
+        opacity: 0;
+    }
+}
+.little-things {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.love-card {
+    width: 100%;
+    min-height: 130px;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.love-card-front,
+.love-card-back {
+    width: 100%;
+    min-height: 130px;
+    box-sizing: border-box;
+    border-radius: 22px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+    box-shadow: 0 8px 20px rgba(220, 120, 150, 0.15);
+}
+
+.love-card-front {
+    background: linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffe1eb
+    );
+}
+
+.love-card-front span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #b98291;
+    margin-bottom: 8px;
+}
+
+.love-card-front strong {
+    color: #d96f8e;
+    font-size: 18px;
+}
+
+.love-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.love-card-back h3 {
+    color: #d96f8e;
+    font-size: 17px;
+    margin: 0 0 8px;
+}
+
+.love-card-back p {
+    color: #8d6873;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.love-card.open .love-card-front {
+    transform: rotateY(180deg);
+}
+
+.love-card.open .love-card-back {
+    transform: rotateY(360deg);
+}
+
+.chapter4-intro {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #8d6873;
+}
+
+.chapter4-ending {
+    margin: 30px 0 20px;
+    padding: 20px;
+    background: #fff5f8;
+    border-radius: 22px;
+}
+
+.chapter4-ending p {
+    margin: 5px 0 10px;
+    font-size: 13px;
+    color: #9b7180;
+}
+
+.chapter4-ending strong {
+    color: #d96f8e;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.chapter4-ending {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 20px;
+    transition: all 0.8s ease;
+}
+
+.chapter4-ending.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    max-height: 300px;
+    margin: 30px 0 20px;
+    padding: 20px;
+}
+
+.final-note {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f3c8d5;
+    color: #9b7180;
+    font-size: 12px;
+    line-height: 1.6;
+    font-style: italic;
+}
+.chapter5-intro {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #8d6873;
+    margin-bottom: 30px;
+}
+
+.timeline {
+    position: relative;
+    margin: 25px 0;
+    padding-left: 25px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: #f3c4d2;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -25px;
+    top: 15px;
+    width: 16px;
+    height: 16px;
+    background: #fff0f5;
+    border: 2px solid #e98ba4;
+    border-radius: 50%;
+    color: #e98ba4;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.timeline-card {
+    padding: 18px;
+    background: white;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(220, 120, 150, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.timeline-card:hover {
+    transform: translateX(5px);
+}
+
+.timeline-card span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #d96f8e;
+    font-weight: bold;
+}
+
+.timeline-card h3 {
+    margin: 7px 0 8px;
+    color: #d96f8e;
+    font-size: 17px;
+}
+
+.timeline-card p {
+    margin: 0;
+    color: #8d6873;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.chapter5-ending {
+    margin: 30px 0 20px;
+    padding: 22px;
+    background: linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffe3ec
+    );
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(220, 120, 150, 0.12);
+}
+
+.chapter5-ending p {
+    margin: 5px 0 10px;
+    color: #9b7180;
+    font-size: 13px;
+}
+
+.chapter5-ending strong {
+    color: #d96f8e;
+    font-size: 16px;
+}
+.chapter6-intro {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #8d6873;
+    margin-bottom: 25px;
+}
+
+.message-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message-card {
+    width: 100%;
+    min-height: 145px;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.message-front,
+.message-back {
+    width: 100%;
+    min-height: 145px;
+    box-sizing: border-box;
+    border-radius: 22px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+    box-shadow: 0 8px 20px rgba(220, 120, 150, 0.15);
+}
+
+.message-front {
+    background: linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffe1eb
+    );
+}
+
+.message-front span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #b98291;
+    margin-bottom: 8px;
+}
+
+.message-front strong {
+    color: #d96f8e;
+    font-size: 17px;
+}
+
+.message-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.message-back h3 {
+    color: #d96f8e;
+    font-size: 17px;
+    margin: 0 0 8px;
+}
+
+.message-back p {
+    color: #8d6873;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.message-card.open .message-front {
+    transform: rotateY(180deg);
+}
+
+.message-card.open .message-back {
+    transform: rotateY(360deg);
+}
+
+.chapter6-final {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 20px;
+    transition: all 0.8s ease;
+}
+
+.chapter6-final.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    max-height: 250px;
+    margin: 30px 0 20px;
+    padding: 25px 20px;
+    background: linear-gradient(
+        135deg,
+        #fff5f8,
+        #ffe3ec
+    );
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(220, 120, 150, 0.15);
+}
+
+.final-heart {
+    font-size: 35px;
+    color: #e98ba4;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.chapter6-final p {
+    color: #9b7180;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.chapter6-final strong {
+    color: #d96f8e;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.final-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #fff5f8,
+            #ffe3ec 45%,
+            #ffd1df
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.8s ease;
+
+    z-index: 50;
+}
+
+.final-page.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.final-content {
+    width: 360px;
+    max-height: 88vh;
+    overflow-y: auto;
+
+    padding: 30px;
+    box-sizing: border-box;
+
+    text-align: center;
+}
+
+.final-top-heart {
+    font-size: 45px;
+    color: #e98ba4;
+
+    animation:
+        heartbeat 1.5s ease-in-out infinite;
+}
+
+.final-label {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 10px;
+    letter-spacing: 4px;
+
+    color: #b98291;
+}
+
+.final-content h1 {
+    margin: 15px 0;
+
+    color: #d96f8e;
+
+    font-size: 32px;
+    line-height: 1.25;
+}
+
+.final-line {
+    width: 45px;
+    height: 2px;
+
+    margin: 20px auto;
+
+    background: #e98ba4;
+}
+
+.final-message {
+    color: #8d6873;
+
+    font-size: 13px;
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+.final-photo {
+    position: relative;
+
+    width: 220px;
+
+    margin: 25px auto;
+
+    padding: 8px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 35px
+        rgba(220, 120, 150, 0.2);
+
+    transform: rotate(-3deg);
+}
+
+.final-photo img {
+    width: 100%;
+
+    display: block;
+
+    border-radius: 7px;
+}
+
+.photo-overlay {
+    padding: 8px 0 3px;
+}
+
+.photo-overlay span {
+    color: #e98ba4;
+    font-size: 16px;
+}
+
+.photo-overlay p {
+    margin: 2px 0 0;
+
+    color: #9b7180;
+
+    font-size: 11px;
+
+    font-style: italic;
+}
+.final-date::before {
+    content: "♡";
+    display: block;
+    margin-bottom: 12px;
+    color: #e98ba4;
+    font-size: 16px;
+}
+
+.final-date {
+    margin-top: 30px;
+    color: #d96f8e;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.final-small {
+    margin: 12px 0 25px;
+    color: #9b7180;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.final-content button {
+    margin-top: 5px;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #e98ba4, #d96f8e);
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(220, 120, 150, 0.2);
+    transition: all 0.3s ease;
+}
+
+.final-content button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(220, 120, 150, 0.28);
+}
+.memory-wall-section {
+    margin-top: 35px;
+}
+
+.memory-wall-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.memory-wall-title span {
+    display: block;
+    color: #e98ba4;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.memory-wall-title h2 {
+    margin: 0;
+    color: #d96f8e;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.memory-wall-title p {
+    margin: 7px 0 0;
+    color: #9b7180;
+    font-size: 11px;
+    font-style: italic;
+}
+
+.memory-wall {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px 5px 20px;
+}
+
+.memory-item {
+    background: white;
+    padding: 7px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(220, 120, 150, 0.18);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.memory-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+}
+
+.memory-item:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0 12px 25px rgba(220, 120, 150, 0.25);
+}
+
+/* bikin posisi foto lebih natural */
+
+.memory-1 {
+    transform: rotate(-4deg);
+}
+
+.memory-2 {
+    transform: rotate(3deg);
+}
+
+.memory-3 {
+    transform: rotate(-2deg);
+}
+
+.memory-4 {
+    transform: rotate(4deg);
+}
+
+.memory-5 {
+    transform: rotate(-3deg);
+}
+
+.memory-6 {
+    transform: rotate(2deg);
+}
+
+.memory-7 {
+    transform: rotate(4deg);
+}
+
+.memory-8 {
+    transform: rotate(-4deg);
+}
+
+.memory-9 {
+    transform: rotate(2deg);
+}
+
+.memory-10 {
+    transform: rotate(-3deg);
+}
+
+.memory-11 {
+    transform: rotate(3deg);
+}
+
+.memory-12 {
+    transform: rotate(-2deg);
+}
+
+.memory-13 {
+    transform: rotate(-4deg);
+}
+
+.memory-14 {
+    transform: rotate(3deg);
+}
+
+.memory-15 {
+    transform: rotate(-3deg);
+}
+
+.memory-16 {
+    transform: rotate(4deg);
+}
+
+.memory-17 {
+    transform: rotate(-2deg);
+}
+
+.memory-18 {
+    transform: rotate(3deg);
+}
+
+.memory-19 {
+    transform: rotate(-4deg);
+}
+
+.memory-20 {
+    transform: rotate(2deg);
+}
+
+.memory-21 {
+    transform: rotate(-3deg);
+}
+
+.memory-wall-ending {
+    margin: 20px 0 30px;
+    color: #9b7180;
+    font-size: 12px;
+    line-height: 1.7;
+    font-style: italic;
+}
+.memory-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(80, 40, 55, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease;
+    z-index: 100;
+}
+
+.memory-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.memory-popup-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    transform: scale(0.8);
+    transition: transform 0.35s ease;
+}
+
+.memory-popup.show .memory-popup-content {
+    transform: scale(1);
+}
+
+.memory-popup-content img {
+    display: block;
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.memory-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: #d96f8e;
+    font-size: 24px;
+    line-height: 35px;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+.final-memory-note {
+    margin: 35px 0 25px;
+    padding: 25px 20px;
+    background: linear-gradient(145deg, #fff8fa, #ffe6ee);
+    border-radius: 28px;
+    box-shadow: 0 12px 30px rgba(220, 120, 150, 0.14);
+    text-align: center;
+}
+
+.final-memory-heart {
+    font-size: 35px;
+    color: #e98ba4;
+    margin-bottom: 8px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.final-memory-note p {
+    margin: 0 0 12px;
+    color: #9b7180;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.final-memory-note strong {
+    display: block;
+    color: #d96f8e;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.final-memory-date {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f2c9d5;
+    color: #d96f8e;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.more-memories {
+    display: block;
+    margin-top: 10px;
+    color: #9b7180;
+    font-size: 11px;
+    font-style: italic;
+}
+#musicButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+    border: none;
+    padding: 9px 15px;
+    border-radius: 20px;
+    background: rgba(255, 245, 248, 0.9);
+    color: #d96f8e;
+    font-size: 11px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(220, 120, 150, 0.15);
+    backdrop-filter: blur(5px);
+    transition: transform 0.2s ease;
+}
+
+#musicButton:hover {
+    transform: translateY(-2px);
+}
+@media (max-width: 600px) {
+
+    .story-content {
+        width: 94vw;
+        max-height: 88vh;
+        padding: 22px 18px;
+        border-radius: 24px;
+    }
+
+    .story-content h1 {
+        font-size: 17px;
+    }
+
+    .story-content h2 {
+        font-size: 23px;
+    }
+
+    .story-content p {
+        font-size: 13px;
+    }
+
+    .photobooth-card {
+        width: 90%;
+    }
+
+    .jadian-photo-row {
+        gap: 8px;
+    }
+
+    .jadian-photo-card {
+        width: 46%;
+    }
+
+    .memory-gallery {
+        width: 100%;
+    }
+
+    .question-card {
+        padding: 22px 15px;
+    }
+
+    .timeline {
+        padding-left: 22px;
+    }
+
+    .timeline-dot {
+        left: -22px;
+    }
+
+    .final-content {
+        width: 94vw;
+        max-height: 90vh;
+        padding: 25px 18px;
+    }
+
+    .final-content h1 {
+        font-size: 28px;
+    }
+
+    .final-message {
+        font-size: 12px;
+    }
+
+    .memory-wall {
+        gap: 10px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+    .memory-item {
+        padding: 5px;
+    }
+
+    .memory-wall-title h2 {
+        font-size: 17px;
+        letter-spacing: 1.5px;
+    }
+
+    .memory-popup {
+        padding: 15px;
+    }
+
+    .memory-popup-content img {
+        max-width: 88vw;
+        max-height: 75vh;
+    }
+
+    .memory-close {
+        top: -12px;
+        right: -12px;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 21px;
+    }
+
+    #musicButton {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 13px;
+        font-size: 10px;
+    }
+}
+    </style>
+
+</head>
+
+
+<body>
+
+        <div class="hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+        <span>♡</span>
+    </div>
+
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+    <img src="foto rani.png" class="rani-sticker">
+
+    <div class="card">
+
+        <h1>haii sayangkuu!! ♡</h1>
+
+        <p>I made something for you.</p>
+
+        <button onclick="openStory()">Open it ♡</button>
+        
+        <audio id="backgroundMusic" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicButton" onclick="toggleMusic()">
+    ♡ music
+</button>
+
+    </div>
+    
+   <div id="storyPopup" class="story-popup">
+
+    <div class="story-box">
+
+    <div class="small-heart">♡</div>
+
+    <h2>Our Little Story ♡</h2>
+
+    <p>
+        Every little moment with you
+        means more than you know.
+    </p>
+
+    <div class="story-buttons">
+
+        <button onclick="continueStory()">
+            Continue ♡
+        </button>
+
+        <button onclick="closeStory()">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+<script>
+
+function openStory() {
+    document.getElementById("storyPopup").classList.add("show");
+}
+
+function closeStory() {
+    document.getElementById("storyPopup").classList.remove("show");
+}
+
+function continueStory() {
+    document.getElementById("storyPopup").classList.remove("show");
+
+    document.getElementById("storyPage").classList.add("show");
+}
+
+function closeStoryPage() {
+    document.getElementById("storyPage").classList.remove("show");
+}
+function goToChapter2() {
+    document.getElementById("storyPage").classList.remove("show");
+    document.getElementById("chapter2Page").classList.add("show");
+}
+
+function backToChapter1() {
+    document.getElementById("chapter2Page").classList.remove("show");
+    document.getElementById("storyPage").classList.add("show");
+}
+
+function backToChapter1() {
+    document.getElementById("chapter2Page").classList.remove("show");
+
+    document.getElementById("storyPage").classList.add("show");
+}
+
+function goToChapter4() {
+    document.getElementById("chapter3Page").classList.remove("show");
+    document.getElementById("chapter4Page").classList.add("show");
+}
+
+function goToChapter3() {
+    document.getElementById("chapter2Page").classList.remove("show");
+    document.getElementById("chapter3Page").classList.add("show");
+}
+
+function backToChapter2() {
+    document.getElementById("chapter3Page").classList.remove("show");
+    document.getElementById("chapter2Page").classList.add("show");
+}
+function showAnswer() {
+    document.getElementById("answerReveal").classList.add("show");
+}
+function goToChapter4() {
+    document.getElementById("chapter3Page").classList.remove("show");
+    document.getElementById("chapter4Page").classList.add("show");
+}
+
+function backToChapter3() {
+    document.getElementById("chapter4Page").classList.remove("show");
+    document.getElementById("chapter3Page").classList.add("show");
+}
+
+function openLoveCard(card) {
+    card.classList.toggle("open");
+
+    const openedCards = document.querySelectorAll(".love-card.open");
+
+    if (openedCards.length === 5) {
+        document.getElementById("chapter4Ending").classList.add("show");
+    }
+}
+function goToChapter5() {
+    document.getElementById("chapter4Page").classList.remove("show");
+    document.getElementById("chapter5Page").classList.add("show");
+}
+
+function backToChapter4() {
+    document.getElementById("chapter5Page").classList.remove("show");
+    document.getElementById("chapter4Page").classList.add("show");
+}
+function goToChapter6() {
+    document.getElementById("chapter5Page").classList.remove("show");
+    document.getElementById("chapter6Page").classList.add("show");
+}
+
+function backToChapter5() {
+    document.getElementById("chapter6Page").classList.remove("show");
+    document.getElementById("chapter5Page").classList.add("show");
+}
+
+function openMessage(card) {
+    card.classList.toggle("open");
+
+    const openedMessages =
+        document.querySelectorAll(".message-card.open");
+
+    if (openedMessages.length === 4) {
+        document.getElementById("chapter6Final").classList.add("show");
+    }
+}
+function openFinalPage() {
+    document.getElementById("chapter6Page").classList.remove("show");
+    document.getElementById("finalPage").classList.add("show");
+}
+
+function restartStory() {
+    document.getElementById("finalPage").classList.remove("show");
+    document.getElementById("jnhtbg").classList.add("show");
+}
+function openMemory(memory) {
+    const image = memory.querySelector("img");
+    const popup = document.getElementById("memoryPopup");
+    const popupImage = document.getElementById("popupImage");
+
+    popupImage.src = image.src;
+    popup.classList.add("show");
+}
+
+function closeMemory() {
+    document.getElementById("memoryPopup").classList.remove("show");
+}
+function toggleMusic() {
+    const music = document.getElementById("backgroundMusic");
+    const button = document.getElementById("musicButton");
+
+    if (music.paused) {
+        music.play();
+        button.innerHTML = "♡ music on";
+    } else {
+        music.pause();
+        button.innerHTML = "♡ music off";
+    }
+}
+</script>
+<div id="storyPage" class="story-page">
+
+    <div class="story-content">
+
+        <div class="small-heart">♡</div>
+
+        <h1>Chapter 01</h1>
+
+        <h2>The First Time We Met ♡</h2>
+
+        <div class="photobooth-card">
+
+            <div class="photobooth-frame">
+
+                <video class="memory-video" autoplay loop muted playsinline>
+                    <source src="gifharipertama.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
+            <p class="photobooth-caption">
+                the day we met ♡
+            </p>
+
+        </div>
+
+        <p>
+            We didn't even know each other before Instagram brought us together.
+            Then, on June 17, 2025, we finally met for the first time.
+
+            <br><br>
+
+            The first thing I noticed was how pretty you were.
+            But after we actually met, I realized there was so much more.
+            You were funny, random, and somehow we just clicked so easily.
+
+            <br><br>
+
+            It's actually funny to think that on our first meeting,
+            we were already looking for photobooths everywhere,
+            taking pictures together while still being shy and awkward.
+            I guess those little moments became some of my favorite memories.
+
+            <br><br>
+
+            And somewhere between all those conversations,
+            I realized I really liked you.
+            It was probably on our second meeting,
+            when I started realizing how easily we connected,
+            and how you somehow just understood me.
+        </p>
+
+        <div class="memory-date">
+            17.06.2025 ♡
+        </div>
+
+        <button onclick="goToChapter2()">
+            Chapter 02 ♡
+        </button>
+
+        <button onclick="closeStoryPage()">
+            Back ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="chapter2Page" class="story-page">
+    <div class="story-content">
+
+    <div class="small-heart">♡</div>
+
+    <h1>Chapter 02</h1>
+
+    <h2>When I Started Falling For You</h2>
+
+    <div class="memory-gallery">
+
+        <div class="photobooth-card">
+
+            <div class="photobooth-frame">
+
+                <video class="memory-video" autoplay loop muted playsinline>
+                    <source src="fotomirrorharikedua.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
+            <p class="photobooth-caption">
+                a little moment ♡
+            </p>
+
+        </div>
+
+        <div class="photobooth-card">
+
+            <div class="photobooth-frame">
+
+                <img src="fotomirror1.jpeg" class="memory-photo">
+
+            </div>
+
+            <p class="photobooth-caption">
+                one of my favorite memories ♡
+            </p>
+
+        </div>
+
+        <div class="photobooth-card">
+
+            <div class="photobooth-frame">
+
+                <img src="fotomirror1 (2).jpeg" class="memory-photo">
+
+            </div>
+
+            <p class="photobooth-caption">
+                another little memory ♡
+            </p>
+
+        </div>
+
+    </div>
+
+    <p>
+        Our second meeting felt a little different.
+
+        <br><br>
+
+        By then, we had already talked quite a lot,
+        and somehow every conversation with you
+        just felt so easy.
+
+        <br><br>
+
+        You were funny, random, and somehow
+        you just understood me.
+
+        <br><br>
+
+        I think that was when I started realizing
+        that maybe this wasn't just a simple friendship.
+        I was starting to really like you.
+    </p>
+
+   <div class="memory-date">
+    The beginning of something more ♡
+   </div>
+    
+   <button onclick="goToChapter3()">
+    Chapter 03 ♡
+</button>
+
+<button onclick="backToChapter1()">
+    Back ♡
+</button>
+    
+</div>
+
+</div>
+
+<div id="chapter3Page" class="story-page">
+
+    <div class="story-content">
+
+        <div class="small-heart">♡</div>
+
+        <h1>Chapter 03</h1>
+
+        <h2>The Day We Became Us ♡</h2>
+        <div class="nervous-note">
+    🎀 nervous boy detected 🎀
+</div>
+        <div class="jadian-memories">
+
+    <div class="memory-intro">
+        <span>06 · 10 · 2025</span>
+        <p>one little day, one very big memory ♡</p>
+    </div>
+
+    <div class="jadian-video-card">
+        <video autoplay loop muted playsinline>
+            <source src="vidiojadian1.mp4" type="video/mp4">
+        </video>
+        <div class="memory-label">
+            <span>01</span>
+            <p>the moment it all began ♡</p>
+        </div>
+    </div>
+
+    <div class="jadian-photo-row">
+
+        <div class="jadian-photo-card photo-left">
+            <img src="fotomirrorjadian1.jpeg">
+            <span>♡ us</span>
+        </div>
+
+        <div class="jadian-photo-card photo-right">
+            <img src="fotomirrorjadian2.jpeg">
+            <span>♡ that day</span>
+        </div>
+
+    </div>
+
+    <div class="jadian-video-card second-video">
+        <video autoplay loop muted playsinline>
+            <source src="vidiojadian2.mp4" type="video/mp4">
+        </video>
+        <div class="memory-label">
+            <span>02</span>
+            <p>and somehow, we became us ♡</p>
+        </div>
+    </div>
+
+</div>
+
+        <p>
+            I still remember how nervous I was that day.
+
+            <br><br>
+
+            Before I asked you to be mine,
+            we had a deep talk about relationships,
+            about what you wanted,
+            and about what kind of relationship
+            you actually hoped for.
+
+            <br><br>
+
+            And honestly...
+            the more we talked,
+            the more nervous I became.
+
+            <br><br>
+
+            Because eventually,
+            I knew I had to tell you how I felt.
+
+            <br><br>
+
+            I was really scared you might say no.
+            My heart was beating so fast,
+            and I kept thinking about what would happen
+            after I finally said it.
+
+            <br><br>
+
+            But somehow,
+            I finally gathered the courage
+            to ask you to be my girlfriend.
+
+            <br><br>
+
+            And then...
+
+            <br><br>
+
+            <strong>you said yes. ♡</strong>
+
+            <br><br>
+
+            I don't think I can properly explain
+            how happy I felt in that moment.
+
+            <br><br>
+
+            We were both happy,
+            and somehow that nervous feeling
+            turned into one of the happiest moments
+            I've ever had with you.
+
+        </p>
+       
+        <div class="date-card">
+
+    <div class="date-heart">♡</div>
+
+    <div>
+        <span>THE DAY WE BECAME US</span>
+        <strong>06 · 10 · 2025</strong>
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-heart">♡</div>
+
+    <p class="question-small">
+        one little question...
+    </p>
+
+    <h3>
+        that changed everything.
+    </h3>
+
+    <button onclick="showAnswer()">
+    okay... here goes nothing ♡
+</button>
+
+    <div id="answerReveal" class="answer-reveal">
+
+        <p class="question-text">
+            Will you be my girlfriend?
+        </p>
+
+        <div class="yes-text">
+            you said yes. ♡
+        </div>
+
+        <p class="answer-message">
+            And somehow, that little "yes"
+            became the beginning of my favorite story.
+        </p>
+       
+        <div class="little-hearts">
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+    <span>♡</span>
+</div>
+
+    </div>
+
+</div>
+
+        <button onclick="goToChapter4()">
+            Chapter 04 ♡
+        </button>
+
+        <button onclick="backToChapter2()">
+            Back ♡
+        </button>
+
+    </div>
+
+</div>
+
+<div id="chapter4Page" class="story-page">
+
+    <div class="story-content">
+
+        <div class="small-heart">♡</div>
+
+        <h1>Chapter 04</h1>
+
+        <h2>Little Things I Love About You ♡</h2>
+
+        <p class="chapter4-intro">
+            Maybe they're little things,
+            but somehow they became some of my favorite things about you.
+        </p>
+
+        <div class="little-things">
+
+            <div class="love-card" onclick="openLoveCard(this)">
+                <div class="love-card-front">
+                    <span>01</span>
+                    <strong>tap me ♡</strong>
+                </div>
+
+                <div class="love-card-back">
+                    <h3>Your happiness ♡</h3>
+                    <p>
+                        I love how cheerful you are.
+                        Seeing you happy somehow makes my day better too.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="love-card" onclick="openLoveCard(this)">
+                <div class="love-card-front">
+                    <span>02</span>
+                    <strong>tap me ♡</strong>
+                </div>
+
+                <div class="love-card-back">
+                    <h3>That first “sayang” ♡</h3>
+                    <p>
+                        I still remember the first time
+                        we called each other “sayang”.
+                        It was such a small thing,
+                        but it felt really special to me.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="love-card" onclick="openLoveCard(this)">
+                <div class="love-card-front">
+                    <span>03</span>
+                    <strong>tap me ♡</strong>
+                </div>
+
+                <div class="love-card-back">
+                    <h3>Your randomness ♡</h3>
+                    <p>
+                        You're random in the best way possible.
+                        And honestly, I wouldn't want you any other way.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="love-card" onclick="openLoveCard(this)">
+                <div class="love-card-front">
+                    <span>04</span>
+                    <strong>tap me ♡</strong>
+                </div>
+
+                <div class="love-card-back">
+                    <h3>The way you care ♡</h3>
+                    <p>
+                        I notice the little ways you care about me.
+                        Even when you don't say much,
+                        I still feel it.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="love-card" onclick="openLoveCard(this)">
+                <div class="love-card-front">
+                    <span>05</span>
+                    <strong>tap me ♡</strong>
+                </div>
+
+                <div class="love-card-back">
+                    <h3>Our stupid little laughs ♡</h3>
+                    <p>
+                        We can laugh about the most random things,
+                        and somehow those moments become
+                        some of my favorite memories.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="chapter4Ending" class="chapter4-ending">
+
+    <div class="small-heart">♡</div>
+
+    <p>
+        And maybe that's what I love most...
+    </p>
+
+    <strong>
+        It's all the little things that make you, you. ♡
+    </strong>
+
+    <div class="final-note">
+        and I'm really happy
+        I get to know all those little things about you.
+        ♡
+    </div>
+
+</div>
+
+        <button onclick="goToChapter5()">
+    Chapter 05 ♡
+</button>
+
+        <button onclick="backToChapter3()">
+            Back ♡
+        </button>
+
+    </div>
+
+</div>
+<div id="chapter5Page" class="story-page">
+
+    <div class="story-content">
+
+        <div class="small-heart">♡</div>
+
+        <h1>Chapter 05</h1>
+
+        <h2>Our Little Moments ♡</h2>
+
+        <p class="chapter5-intro">
+            Some moments were big,
+            some were really small.
+            But somehow, I remember them all.
+        </p>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot">♡</div>
+
+                <div class="timeline-card">
+
+                    <span>THE BEGINNING</span>
+
+                    <h3>17 · 06 · 2025</h3>
+
+                    <p>
+                        The day we met for the first time.
+                        We were still shy and awkward,
+                        but somehow it already felt easy being around you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot">♡</div>
+
+                <div class="timeline-card">
+
+                    <span>SOMETHING CHANGED</span>
+
+                    <h3>Our second meeting</h3>
+
+                    <p>
+                        Somewhere between all the conversations,
+                        random jokes, and little moments,
+                        I started realizing that I really liked you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot">♡</div>
+
+                <div class="timeline-card">
+
+                    <span>THE DAY WE BECAME US</span>
+
+                    <h3>06 · 10 · 2025</h3>
+
+                    <p>
+                        The day I finally asked you to be my girlfriend.
+                        I was nervous, you said yes,
+                        and suddenly everything felt a little different.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot">♡</div>
+
+                <div class="timeline-card">
+
+                    <span>AND THEN...</span>
+
+                    <h3>Us ♡</h3>
+
+                    <p>
+                        More laughs.
+                        More random conversations.
+                        More memories.
+                        And a lot more little moments
+                        that I wouldn't trade for anything.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="chapter5-ending">
+
+            <div class="small-heart">♡</div>
+
+            <p>
+                And this isn't the end of our story.
+            </p>
+
+            <strong>
+                It's just another page. ♡
+            </strong>
+
+        </div>
+
+        <button onclick="goToChapter6()">
+    Chapter 06 ♡
+</button>
+
+
+        <button onclick="backToChapter4()">
+            Back ♡
+        </button>
+
+    </div>
+
+</div>
+<div id="chapter6Page" class="story-page">
+
+    <div class="story-content">
+
+        <div class="small-heart">♡</div>
+
+        <h1>Chapter 06</h1>
+
+        <h2>Things I Want You To Know ♡</h2>
+
+        <p class="chapter6-intro">
+            There are some things I don't always know how to say,
+            so I put them here instead.
+        </p>
+
+
+        <div class="message-list">
+
+            <div class="message-card" onclick="openMessage(this)">
+
+                <div class="message-front">
+                    <span>01</span>
+                    <strong>tap to open ♡</strong>
+                </div>
+
+                <div class="message-back">
+
+                    <h3>I'm proud of you ♡</h3>
+
+                    <p>
+                        I know you have a lot going on,
+                        and sometimes you probably don't realize
+                        how much effort you actually put into everything.
+                        But I notice it.
+                        And I'm proud of you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="message-card" onclick="openMessage(this)">
+
+                <div class="message-front">
+                    <span>02</span>
+                    <strong>tap to open ♡</strong>
+                </div>
+
+                <div class="message-back">
+
+                    <h3>You make ordinary days better ♡</h3>
+
+                    <p>
+                        It doesn't always have to be something special.
+                        Sometimes just talking to you,
+                        laughing about random things,
+                        or hearing about your day
+                        is already enough to make my day better.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="message-card" onclick="openMessage(this)">
+
+                <div class="message-front">
+                    <span>03</span>
+                    <strong>tap to open ♡</strong>
+                </div>
+
+                <div class="message-back">
+
+                    <h3>I appreciate you ♡</h3>
+
+                    <p>
+                        I appreciate all the little ways
+                        you care about me.
+                        Even the things you might think are small,
+                        I remember them.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="message-card" onclick="openMessage(this)">
+
+                <div class="message-front">
+                    <span>04</span>
+                    <strong>tap to open ♡</strong>
+                </div>
+
+                <div class="message-back">
+
+                    <h3>I'm glad it's you ♡</h3>
+
+                    <p>
+                        Out of all the random things
+                        that had to happen for our paths to cross,
+                        I'm really glad they led me to you.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div id="chapter6Final" class="chapter6-final">
+
+            <div class="final-heart">♡</div>
+
+            <p>
+                And if there's one thing
+                I want you to remember...
+            </p>
+
+            <strong>
+                I'm really grateful
+                that you're part of my life. ♡
+            </strong>
+
+        </div>
+
+        <button onclick="openFinalPage()">
+    one more thing... ♡
+</button>
+
+        <button onclick="backToChapter5()">
+            Back ♡
+        </button>
+
+    </div>
+
+</div>
+<div id="finalPage" class="final-page">
+
+    <div class="final-content">
+
+        <div class="final-top-heart">♡</div>
+
+        <span class="final-label">
+            OUR LITTLE WORLD
+        </span>
+
+        <h1>
+            And this is<br>
+            only the beginning.
+        </h1>
+
+        <div class="final-line"></div>
+
+        <p class="final-message">
+            Thank you for every laugh,
+            every random conversation,
+            every little memory,
+            and every moment we've shared.
+
+            <br><br>
+
+            I don't know what the future will look like,
+            but I'm really happy that
+            you're part of my story.
+        </p>
+        
+        <div class="memory-wall-section">
+
+    <div class="memory-wall-title">
+        <span>♡</span>
+        <h2>OUR LITTLE MEMORIES</h2>
+        <p>random moments, little memories, us ♡</p>
+    </div>
+
+    <div class="memory-wall">
+
+        <div class="memory-item memory-1" onclick="openMemory(this)">
+            <img src="memo (1).jpeg">
+        </div>
+
+        <div class="memory-item memory-2" onclick="openMemory(this)">
+            <img src="memo (2).jpeg">
+        </div>
+
+        <div class="memory-item memory-3" onclick="openMemory(this)">
+            <img src="memo (3).jpeg">
+        </div>
+
+        <div class="memory-item memory-4" onclick="openMemory(this)">
+            <img src="memo (4).jpeg">
+        </div>
+
+        <div class="memory-item memory-5" onclick="openMemory(this)">
+            <img src="memo (5).jpeg">
+        </div>
+
+        <div class="memory-item memory-6" onclick="openMemory(this)">
+            <img src="memo (6).jpeg">
+        </div>
+
+        <div class="memory-item memory-7" onclick="openMemory(this)">
+            <img src="memo (7).jpeg">
+        </div>
+
+        <div class="memory-item memory-8" onclick="openMemory(this)">
+            <img src="memo (8).jpeg">
+        </div>
+
+        <div class="memory-item memory-9" onclick="openMemory(this)">
+            <img src="memo (9).jpeg">
+        </div>
+
+        <div class="memory-item memory-10" onclick="openMemory(this)">
+            <img src="memo (10).jpeg">
+        </div>
+
+        <div class="memory-item memory-11" onclick="openMemory(this)">
+            <img src="memo (11).jpeg">
+        </div>
+
+        <div class="memory-item memory-12" onclick="openMemory(this)">
+            <img src="memo (12).jpeg">
+        </div>
+
+        <div class="memory-item memory-13" onclick="openMemory(this)">
+            <img src="memo (13).jpeg">
+        </div>
+
+        <div class="memory-item memory-14" onclick="openMemory(this)">
+            <img src="memo (14).jpeg">
+        </div>
+
+        <div class="memory-item memory-15" onclick="openMemory(this)">
+            <img src="memo (15).jpeg">
+        </div>
+
+        <div class="memory-item memory-16" onclick="openMemory(this)">
+            <img src="memo (16).jpeg">
+        </div>
+
+        <div class="memory-item memory-17" onclick="openMemory(this)">
+            <img src="memo (17).jpeg">
+        </div>
+
+        <div class="memory-item memory-18" onclick="openMemory(this)">
+            <img src="memo (18).jpeg">
+        </div>
+
+        <div class="memory-item memory-19" onclick="openMemory(this)">
+            <img src="memo (19).jpeg">
+        </div>
+
+        <div class="memory-item memory-20" onclick="openMemory(this)">
+            <img src="memo (20).jpeg">
+        </div>
+
+    </div>
+
+    <p class="memory-wall-ending">
+        just random moments,<br>
+        but somehow, my favorites. ♡
+    </p>
+    <div class="final-memory-note">
+    <div class="final-memory-heart">♡</div>
+
+    <p>
+        And somehow, all these little moments
+        became a part of our story.
+    </p>
+
+    <strong>
+        Here's to all the memories<br>
+        we've made so far. ♡
+    </strong>
+
+    <div class="final-memory-date">
+        06 · 10 · 2025
+    </div>
+
+    <span class="more-memories">
+        and many more memories to come ♡
+    </span>
+</div>
+
+</div>
+        <div class="final-date">
+            06 · 10 · 2025 ♡
+        </div>
+
+        <p class="final-small">
+            happy anniversary, sayang.
+        </p>
+
+        <button onclick="restartStory()">
+            Start our story again ♡
+        </button>
+        
+        <div id="memoryPopup" class="memory-popup" onclick="closeMemory()">
+    <div class="memory-popup-content" onclick="event.stopPropagation()">
+        <button class="memory-close" onclick="closeMemory()">×</button>
+        <img id="popupImage" src="">
+    </div>
+</div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>
