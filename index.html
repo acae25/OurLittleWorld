@@ -1533,123 +1533,65 @@
     bottom: 20px;
     right: 20px;
     z-index: 200;
+
     border: none;
-    padding: 9px 15px;
-    border-radius: 20px;
-    background: rgba(255, 245, 248, 0.9);
+    padding: 11px 18px;
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.95);
     color: #d96f8e;
-    font-size: 11px;
+
+    font-size: 13px;
+    font-weight: 600;
+
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(220, 120, 150, 0.15);
-    backdrop-filter: blur(5px);
-    transition: transform 0.2s ease;
+
+    box-shadow: 0 6px 18px rgba(220, 120, 150, 0.25);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition: all 0.25s ease;
 }
 
 #musicButton:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 9px 22px rgba(220, 120, 150, 0.3);
+}#musicButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 200;
+
+    border: none;
+    padding: 11px 18px;
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.95);
+    color: #d96f8e;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 18px rgba(220, 120, 150, 0.25);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition: all 0.25s ease;
 }
-@media (max-width: 600px) {
 
-    .story-content {
-        width: 94vw;
-        max-height: 88vh;
-        padding: 22px 18px;
-        border-radius: 24px;
-    }
-
-    .story-content h1 {
-        font-size: 17px;
-    }
-
-    .story-content h2 {
-        font-size: 23px;
-    }
-
-    .story-content p {
-        font-size: 13px;
-    }
-
-    .photobooth-card {
-        width: 90%;
-    }
-
-    .jadian-photo-row {
-        gap: 8px;
-    }
-
-    .jadian-photo-card {
-        width: 46%;
-    }
-
-    .memory-gallery {
-        width: 100%;
-    }
-
-    .question-card {
-        padding: 22px 15px;
-    }
-
-    .timeline {
-        padding-left: 22px;
-    }
-
-    .timeline-dot {
-        left: -22px;
-    }
-
-    .final-content {
-        width: 94vw;
-        max-height: 90vh;
-        padding: 25px 18px;
-    }
-
-    .final-content h1 {
-        font-size: 28px;
-    }
-
-    .final-message {
-        font-size: 12px;
-    }
-
-    .memory-wall {
-        gap: 10px;
-        padding-left: 2px;
-        padding-right: 2px;
-    }
-
-    .memory-item {
-        padding: 5px;
-    }
-
-    .memory-wall-title h2 {
-        font-size: 17px;
-        letter-spacing: 1.5px;
-    }
-
-    .memory-popup {
-        padding: 15px;
-    }
-
-    .memory-popup-content img {
-        max-width: 88vw;
-        max-height: 75vh;
-    }
-
-    .memory-close {
-        top: -12px;
-        right: -12px;
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
-        font-size: 21px;
-    }
-
-    #musicButton {
-        bottom: 15px;
-        right: 15px;
-        padding: 8px 13px;
-        font-size: 10px;
-    }
+#musicButton:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 9px 22px rgba(220, 120, 150, 0.3);
+}
+#musicButton {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 16px;
+    font-size: 12px;
 }
 .floating-stickers {
     position: fixed;
@@ -2905,10 +2847,6 @@ function toggleMusic() {
         <div class="final-date">
             06 · 10 · 2025 ♡
         </div>
-
-        <p class="final-small">
-            happy anniversary, sayang.
-        </p>
 
         <button onclick="restartStory()">
             Start our story again ♡
